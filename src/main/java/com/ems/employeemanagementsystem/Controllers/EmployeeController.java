@@ -76,7 +76,7 @@ public class EmployeeController {
 
     }
 
-    @GetMapping("/students/{id}")
+    @GetMapping("/employees/{id}")
     public String deleteEmployee(@PathVariable Long id){
         employeeService.deleteEmployee(id);
 
