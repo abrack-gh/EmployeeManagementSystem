@@ -2,9 +2,148 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Title</title>
+    <title>Add a new Employee</title>
+    <link rel="stylesheet"
+          href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
+          integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm"
+          crossorigin="anonymous">
 </head>
 <body>
+<nav class="navbar navbar-expand-md bg-dark navbar-dark">
+    <!-- Brand -->
+    <a class="navbar-brand" href="#">EmployeeE Management System</a>
 
+    <!-- Toggler/collapsibe Button -->
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#collapsibleNavbar">
+        <span class="navbar-toggler-icon"></span>
+    </button>
+
+    <!-- Navbar links -->
+    <div class="collapse navbar-collapse" id="collapsibleNavbar">
+        <ul class="navbar-nav">
+            <li class="nav-item">
+                <a class="nav-link" th:href="@{/employees}">Employee Management</a>
+            </li>
+        </ul>
+    </div>
+</nav>
+<br>
+<br>
+<div class = "container">
+    <div class = "row">
+        <div class ="col-lg-6 col-md-6 col-sm-6 container justify-content-center card">
+            <h1 class = "text-center"> Add new Employee </h1>
+            <div class = "card-body">
+                <form th:action="@{/employees}" th:object = "${employee}" method="POST">
+                    <div class ="form-group">
+                        <label> Employee First Name </label>
+                        <input
+                                type = "text"
+                                name = "firstName"
+                                th:field = "*{firstName}"
+                                class = "form-control"
+                                placeholder="Enter Employee First Name"
+                        />
+                    </div>
+
+                    <div class ="form-group">
+                        <label> Employee Last Name </label>
+                        <input
+                                type = "text"
+                                name = "lastName"
+                                th:field = "*{lastName}"
+                                class = "form-control"
+                                placeholder="Enter Employee Last Name"
+                        />
+                    </div>
+
+                    <div class ="form-group">
+                        <label> Employee First Line </label>
+                        <input
+                                type = "text"
+                                name = "firstLine"
+                                th:field = "*{firstLineAddress}"
+                                class = "form-control"
+                                placeholder="First Line of Address..."
+                        />
+                    </div>
+
+                    <div class ="form-group">
+                        <label> Employee Second Line </label>
+                        <input
+                                type = "text"
+                                name = "secondLine"
+                                th:field = "*{secondLineAddress}"
+                                class = "form-control"
+                                placeholder="Second Line of Address..."
+                        />
+                    </div>
+
+                    <div class ="form-group">
+                        <label> Employee City </label>
+                        <input
+                                type = "text"
+                                name = "city"
+                                th:field = "*{city}"
+                                class = "form-control"
+                                placeholder="City..."
+                        />
+                    </div>
+
+                    <div class ="form-group">
+                        <label> Employee Post Code </label>
+                        <input
+                                type = "text"
+                                name = "firstLine"
+                                th:field = "*{postCode}"
+                                class = "form-control"
+                                placeholder="Post of Address..."
+                        />
+                    </div>
+
+                    <div class ="form-group">
+                        <label> Employee Contact Number </label>
+                        <input
+                                type = "text"
+                                name = "contactNumber"
+                                th:field = "*{contactNumber}"
+                                class = "form-control"
+                                placeholder="Contact Number..."
+                        />
+                    </div>
+
+                    <div class ="form-group">
+                        <label> Employee Email </label>
+                        <input
+                                type = "text"
+                                name = "email"
+                                th:field = "*{email}"
+                                class = "form-control"
+                                placeholder="Enter Employee Email"
+                        />
+                    </div>
+
+                    <div class ="form-group">
+                        <label> Position </label>
+                        <input
+                                type = "text"
+                                name = "position"
+                                th:field = "*{position}"
+                                class = "form-control"
+                                placeholder="Employee Position..."
+                        />
+                    </div>
+
+                    <div class = "box-footer">
+                        <button type="submit" class = "btn btn-primary">
+                            Submit
+                        </button>
+                    </div>
+                </form>
+
+            </div>
+        </div>
+    </div>
+</div>
 </body>
 </html>
