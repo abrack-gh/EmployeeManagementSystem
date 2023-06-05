@@ -55,7 +55,7 @@ public class EmployeeController {
     }
 
     @GetMapping("/employees/edit/{id}")
-    @PreAuthorize("hasAuthority('ADMIN')")
+    @PreAuthorize("hasAuthority('ROLE_ADMIN')")
     public String updateEmployee(@PathVariable Long id, Model model){
         model.addAttribute("employee", employeeService.getEmployeeById(id));
 
@@ -63,6 +63,7 @@ public class EmployeeController {
     }
 
     @PostMapping("/employees/{id}")
+    @PreAuthorize("hasAuthority('ROLE_ADMIN')")
     public String modifyEmployee(@PathVariable Long id,
                                  @ModelAttribute("employee") Employee employee,
                                  Model model){
