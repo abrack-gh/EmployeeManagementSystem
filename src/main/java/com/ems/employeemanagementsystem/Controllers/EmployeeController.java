@@ -3,6 +3,7 @@ package com.ems.employeemanagementsystem.Controllers;
 import com.ems.employeemanagementsystem.Entity.Employee;
 import com.ems.employeemanagementsystem.Repository.EmployeeRepository;
 import com.ems.employeemanagementsystem.Service.EmployeeService;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
@@ -36,6 +37,7 @@ public class EmployeeController {
     }
 
     @GetMapping("/employees/new")
+    @PreAuthorize("hasAuthority('ADMIN')")
     public String newEmployee(Model model){
 
         Employee employee = new Employee();
@@ -53,6 +55,7 @@ public class EmployeeController {
     }
 
     @GetMapping("/employees/edit/{id}")
+    @PreAuthorize("hasAuthority('ADMIN')")
     public String updateEmployee(@PathVariable Long id, Model model){
         model.addAttribute("employee", employeeService.getEmployeeById(id));
 
