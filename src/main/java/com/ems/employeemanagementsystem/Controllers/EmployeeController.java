@@ -20,6 +20,12 @@ public class EmployeeController {
         this.employeeRepository = employeeRepository;
     }
 
+    //Login Page
+    @GetMapping("/login")
+    public String login(){
+        return "login";
+    }
+
     @GetMapping("/employees")
     public String listEmployees(Model model){
 
