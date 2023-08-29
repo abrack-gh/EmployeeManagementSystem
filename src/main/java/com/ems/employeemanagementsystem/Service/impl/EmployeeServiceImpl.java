@@ -3,6 +3,7 @@ package com.ems.employeemanagementsystem.Service.impl;
 import com.ems.employeemanagementsystem.Entity.Employee;
 import com.ems.employeemanagementsystem.Repository.EmployeeRepository;
 import com.ems.employeemanagementsystem.Service.EmployeeService;
+import org.springframework.cache.annotation.CacheEvict;
 import org.springframework.cache.annotation.Cacheable;
 import org.springframework.stereotype.Service;
 
@@ -23,7 +24,6 @@ public class EmployeeServiceImpl implements EmployeeService {
     @Cacheable("employees")
     public List<Employee> getAllEmployees() throws InterruptedException {
         sleep(1000);
-
         return employeeRepository.findAll();
     }
 
@@ -34,6 +34,7 @@ public class EmployeeServiceImpl implements EmployeeService {
     }
 
     @Override
+    @CacheEvict(value = "employees", allEntries = true) // Will update the whole repository with new cache.
     public Employee modifyEmployee(Employee employee) {
 
         return employeeRepository.save(employee);
