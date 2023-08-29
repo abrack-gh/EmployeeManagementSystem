@@ -3,9 +3,12 @@ package com.ems.employeemanagementsystem.Service.impl;
 import com.ems.employeemanagementsystem.Entity.Employee;
 import com.ems.employeemanagementsystem.Repository.EmployeeRepository;
 import com.ems.employeemanagementsystem.Service.EmployeeService;
+import org.springframework.cache.annotation.Cacheable;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+
+import static java.lang.Thread.sleep;
 
 @Service
 public class EmployeeServiceImpl implements EmployeeService {
@@ -17,8 +20,10 @@ public class EmployeeServiceImpl implements EmployeeService {
         this.employeeRepository = employeeRepository;
     }
 
-    @Override
-    public List<Employee> getAllEmployees() {
+    @Cacheable("employees")
+    public List<Employee> getAllEmployees() throws InterruptedException {
+        sleep(1000);
+
         return employeeRepository.findAll();
     }
 

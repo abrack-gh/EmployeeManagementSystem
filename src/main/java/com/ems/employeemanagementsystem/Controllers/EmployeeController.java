@@ -3,7 +3,6 @@ package com.ems.employeemanagementsystem.Controllers;
 import com.ems.employeemanagementsystem.Entity.Employee;
 import com.ems.employeemanagementsystem.Repository.EmployeeRepository;
 import com.ems.employeemanagementsystem.Service.EmployeeService;
-import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
@@ -28,7 +27,7 @@ public class EmployeeController {
     }
 
     @GetMapping("/employees")
-    public String listEmployees(Model model){
+    public String listEmployees(Model model) throws InterruptedException {
 
         model.addAttribute("employees", employeeService.getAllEmployees());
 
@@ -37,7 +36,6 @@ public class EmployeeController {
     }
 
     @GetMapping("/employees/new")
-    @PreAuthorize("hasAuthority('ADMIN')")
     public String newEmployee(Model model){
 
         Employee employee = new Employee();
@@ -51,11 +49,10 @@ public class EmployeeController {
 
         employeeRepository.save(employee);
 
-        return "redirect:/employees";
+        return "employees";
     }
 
     @GetMapping("/employees/edit/{id}")
-    @PreAuthorize("hasAuthority('ROLE_ADMIN')")
     public String updateEmployee(@PathVariable Long id, Model model){
         model.addAttribute("employee", employeeService.getEmployeeById(id));
 
@@ -63,7 +60,6 @@ public class EmployeeController {
     }
 
     @PostMapping("/employees/{id}")
-    @PreAuthorize("hasAuthority('ROLE_ADMIN')")
     public String modifyEmployee(@PathVariable Long id,
                                  @ModelAttribute("employee") Employee employee,
                                  Model model){
@@ -82,7 +78,7 @@ public class EmployeeController {
 
         employeeService.modifyEmployee(employee);
 
-        return "redirect:/employees";
+        return "employees";
 
     }
 
