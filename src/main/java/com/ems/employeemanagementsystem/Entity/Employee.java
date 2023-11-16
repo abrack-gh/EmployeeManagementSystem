@@ -1,8 +1,16 @@
 package com.ems.employeemanagementsystem.Entity;
 
 import jakarta.persistence.*;
+import lombok.AllArgsConstructor;
+import lombok.Getter;
+import lombok.NoArgsConstructor;
+import lombok.Setter;
 
 @Entity
+@Getter
+@Setter
+@AllArgsConstructor
+@NoArgsConstructor
 @Table(name = "employee")
 public class Employee {
 
@@ -37,103 +45,4 @@ public class Employee {
     @Column(name = "position", nullable = false)
     private String position;
 
-    public Employee(Long id, String firstName, String lastName, String firstLineAddress,
-                    String secondLineAddress, String city, String postCode,
-                    Long contactNumber, String email, String position) {
-        super();
-        this.id = id;
-        this.firstName = firstName;
-        this.lastName = lastName;
-        this.firstLineAddress = firstLineAddress;
-        this.secondLineAddress = secondLineAddress;
-        this.city = city;
-        this.postCode = postCode;
-        this.contactNumber = contactNumber;
-        this.email = email;
-        this.position = position;
-    }
-
-    public Employee() {
-
-    }
-
-    public Long getId() {
-        return id;
-    }
-
-    public void setId(Long id) {
-        this.id = id;
-    }
-
-    public String getFirstName() {
-        return firstName;
-    }
-
-    public void setFirstName(String firstName) {
-        this.firstName = firstName;
-    }
-
-    public String getLastName() {
-        return lastName;
-    }
-
-    public void setLastName(String lastName) {
-        this.lastName = lastName;
-    }
-
-    public String getFirstLineAddress() {
-        return firstLineAddress;
-    }
-
-    public void setFirstLineAddress(String firstLineAddress) {
-        this.firstLineAddress = firstLineAddress;
-    }
-
-    public String getSecondLineAddress() {
-        return secondLineAddress;
-    }
-
-    public void setSecondLineAddress(String secondLineAddress) {
-        this.secondLineAddress = secondLineAddress;
-    }
-
-    public String getCity() {
-        return city;
-    }
-
-    public void setCity(String city) {
-        this.city = city;
-    }
-
-    public String getPostCode() {
-        return postCode;
-    }
-
-    public void setPostCode(String postCode) {
-        this.postCode = postCode;
-    }
-
-    public Long getContactNumber() {
-        return contactNumber;
-    }
-
-    public void setContactNumber(Long contactNumber) {
-        this.contactNumber = contactNumber;
-    }
-
-    public String getEmail() {
-        return email;
-    }
-
-    public void setEmail(String email) {
-        this.email = email;
-    }
-
-    public String getPosition() {
-        return position;
-    }
-
-    public void setPosition(String position) {
-        this.position = position;
-    }
 }
